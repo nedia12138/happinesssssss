@@ -1,0 +1,64 @@
+{
+  "best_model": "linear_regression",
+  "all_models": {
+    "random_forest": {
+      "metrics": {
+        "model_name": "随机森林",
+        "mse": 0.673,
+        "rmse": 0.8204,
+        "mae": 0.6108,
+        "r2_score": -0.0307,
+        "cv_rmse": 0.85,
+        "cv_scores": [
+          -0.7755,
+          -0.726,
+          -0.7503,
+          -0.6598,
+          -0.7009
+        ]
+      },
+      "path": "random_forest_20260131_194344.pkl"
+    },
+    "linear_regression": {
+      "metrics": {
+        "model_name": "线性回归",
+        "mse": 0.6037,
+        "rmse": 0.777,
+        "mae": 0.5563,
+        "r2_score": 0.0755,
+        "cv_rmse": 0.7798,
+        "cv_scores": [
+          -0.6656,
+          -0.6148,
+          -0.6025,
+          -0.6044,
+          -0.5534
+        ]
+      },
+      "path": "linear_regression_20260131_194344.pkl"
+    }
+  },
+  "feature_importance": {
+    "age": 0.19315627730981566,
+    "floorArea": 0.18210123680608453,
+    "familyIncome": 0.16108633804637754,
+    "income": 0.1538458905587709,
+    "edu": 0.1012028912993984,
+    "health": 0.06914105275314969,
+    "workStatus": 0.05467907218097418,
+    "marital": 0.05197765369543398,
+    "gender": 0.03280958734999526
+  },
+  "feature_columns": [
+    "edu",
+    "income",
+    "health",
+    "marital",
+    "age",
+    "gender",
+    "familyIncome",
+    "workStatus",
+    "floorArea"
+  ],
+  "timestamp": "2026-01-31 19:43:44"
+}
