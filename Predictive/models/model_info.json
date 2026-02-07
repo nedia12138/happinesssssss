@@ -1,53 +1,56 @@
 {
-  "best_model": "linear_regression",
+  "best_model": "random_forest",
   "all_models": {
-    "random_forest": {
-      "metrics": {
-        "model_name": "随机森林",
-        "mse": 0.673,
-        "rmse": 0.8204,
-        "mae": 0.6108,
-        "r2_score": -0.0307,
-        "cv_rmse": 0.85,
-        "cv_scores": [
-          -0.7755,
-          -0.726,
-          -0.7503,
-          -0.6598,
-          -0.7009
-        ]
-      },
-      "path": "random_forest_20260131_194344.pkl"
-    },
     "linear_regression": {
       "metrics": {
-        "model_name": "线性回归",
-        "mse": 0.6037,
-        "rmse": 0.777,
-        "mae": 0.5563,
-        "r2_score": 0.0755,
-        "cv_rmse": 0.7798,
+        "model_name": "linear_regression",
+        "mse": 0.6104,
+        "rmse": 0.7813,
+        "mae": 0.5538,
+        "r2_score": 0.0873,
+        "cv_rmse": 0.7826,
         "cv_scores": [
-          -0.6656,
-          -0.6148,
-          -0.6025,
-          -0.6044,
-          -0.5534
+          -0.6152,
+          -0.5763,
+          -0.6265,
+          -0.6669,
+          -0.5777
         ]
       },
-      "path": "linear_regression_20260131_194344.pkl"
+      "path": "linear_regression_20260206_172908.pkl"
+    },
+    "random_forest": {
+      "metrics": {
+        "model_name": "random_forest",
+        "mse": 0.5259,
+        "rmse": 0.7252,
+        "mae": 0.5232,
+        "r2_score": 0.2136,
+        "cv_rmse": 0.7268,
+        "cv_scores": [
+          -0.5248,
+          -0.4933,
+          -0.5415,
+          -0.5821,
+          -0.4997
+        ]
+      },
+      "path": "random_forest_20260206_172908.pkl"
     }
   },
   "feature_importance": {
-    "age": 0.19315627730981566,
-    "floorArea": 0.18210123680608453,
-    "familyIncome": 0.16108633804637754,
-    "income": 0.1538458905587709,
-    "edu": 0.1012028912993984,
-    "health": 0.06914105275314969,
-    "workStatus": 0.05467907218097418,
-    "marital": 0.05197765369543398,
-    "gender": 0.03280958734999526
+    "health_age": 0.18427377363701483,
+    "health": 0.15281555538497538,
+    "floorArea": 0.1416335764553791,
+    "familyIncome": 0.13765622222460877,
+    "age": 0.08028385503842517,
+    "edu_income": 0.07957894238245576,
+    "income_ratio": 0.06647413468983651,
+    "income": 0.05906144988767151,
+    "marital": 0.03804000416642825,
+    "edu": 0.02959285966545778,
+    "gender": 0.018362347574866277,
+    "workStatus": 0.012227278892880729
   },
   "feature_columns": [
     "edu",
@@ -58,7 +61,10 @@
     "gender",
     "familyIncome",
     "workStatus",
-    "floorArea"
+    "floorArea",
+    "edu_income",
+    "health_age",
+    "income_ratio"
   ],
-  "timestamp": "2026-01-31 19:43:44"
+  "timestamp": "2026-02-06 17:29:08"
 }

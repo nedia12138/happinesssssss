@@ -6,21 +6,21 @@ const LayoutConfig = {
     
     // 后台菜单配置
     adminMenu: [
-        {
-            index: 'user_management',
-            title: '用户管理',
-            icon: 'el-icon-user',
-            roles: ['admin'], // 只有管理员可以访问
-            children: [
-                {
-                    index: 'users',
-                    title: '用户列表',
-                    path: '/admin/users.html',
-                    icon: 'el-icon-user-solid',
-                    roles: ['admin'] // 只有管理员可以访问
-                }
-            ]
-        },  
+        // {
+        //     index: 'user_management',
+        //     title: '用户管理',
+        //     icon: 'el-icon-user',
+        //     roles: ['admin'], // 只有管理员可以访问
+        //     children: [
+        //         {
+        //             index: 'users',
+        //             title: '用户列表',
+        //             path: '/admin/users.html',
+        //             icon: 'el-icon-user-solid',
+        //             roles: ['admin'] // 只有管理员可以访问
+        //         }
+        //     ]
+        // },  
         {
             index: 'happiness_survey',
             title: '幸福感调查表',

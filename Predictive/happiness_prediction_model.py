@@ -23,7 +23,7 @@ DB_CONFIG = {
     'host': '127.0.0.1',
     'port': 3306,
     'user': 'root',
-    'password': '12121212',
+    'password': '123456',
     'database': '0_80123xingfuganwajue',
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor
@@ -49,7 +49,7 @@ class HappinessPredictionModel:
             'floorArea',     # 住房面积
         ]
         self.target_column = 'happiness'
-
+        
         # 使用os.path.join确保跨平台兼容
         current_dir = os.path.dirname(os.path.abspath(__file__))
         self.model_dir = os.path.join(current_dir, 'models')
@@ -454,7 +454,7 @@ class HappinessPredictionModel:
                 relative_paths[model_name] = os.path.basename(path)
             else:
                 relative_paths[model_name] = ''
-
+        
         info = {
             'best_model': best_model_name,
             'all_models': {

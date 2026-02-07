@@ -34,7 +34,7 @@ class HappinessPredictor:
                 raise FileNotFoundError(f"模型信息文件不存在: {model_info_path}")
 
             print(f"正在加载模型信息: {model_info_path}")
-
+            
             with open(model_info_path, 'r', encoding='utf-8') as f:
                 self.model_info = json.load(f)
 
@@ -45,7 +45,7 @@ class HappinessPredictor:
             all_models_info = self.model_info.get('all_models', {})
             for model_name, model_info in all_models_info.items():
                 model_path = model_info.get('path', '')
-
+                
                 # 如果是相对路径，转换为绝对路径
                 if model_path and not os.path.isabs(model_path):
                     # 尝试相对于model_info.json所在目录
@@ -58,20 +58,25 @@ class HappinessPredictor:
                         abs_model_path = os.path.join(project_root, model_path)
                         if os.path.exists(abs_model_path):
                             model_path = abs_model_path
-
+                
                 if model_path and os.path.exists(model_path):
                     print(f"正在加载模型: {model_name} from {model_path}")
-                    with open(model_path, 'rb') as f:
-                        model_data = pickle.load(f)
-                        self.models[model_name] = {
-                            'model': model_data['model'],
-                            'scaler': model_data['scaler'],
-                            'metrics': model_info.get('metrics', {})
-                        }
-                        # 使用第一个模型的scaler和feature_columns
-                        if self.scaler is None:
-                            self.scaler = model_data['scaler']
-                            self.feature_columns = model_data['feature_columns']
+                    try:
+                        with open(model_path, 'rb') as f:
+                            model_data = pickle.load(f)
+                            self.models[model_name] = {
+                                'model': model_data['model'],
+                                'scaler': model_data['scaler'],
+                                'metrics': model_info.get('metrics', {})
+                            }
+                            # 使用第一个模型的scaler和feature_columns
+                            if self.scaler is None:
+                                self.scaler = model_data['scaler']
+                                self.feature_columns = model_data['feature_columns']
+                    except (ModuleNotFoundError, AttributeError) as e:
+                        print(f"警告: 模型 {model_name} 加载失败（版本不兼容）: {e}")
+                        print(f"  跳过此模型，继续加载其他模型...")
+                        continue
                 else:
                     print(f"警告: 模型文件不存在: {model_path}")
 
@@ -79,7 +84,17 @@ class HappinessPredictor:
                 raise ValueError("没有找到可用的模型")
 
             print(f"成功加载模型: {list(self.models.keys())}")
-            print(f"最佳模型: {self.model_info['best_model']}")
+            
+            # 如果最佳模型不可用，选择第一个可用的模型
+            best_model = self.model_info['best_model']
+            if best_model not in self.models:
+                best_model = list(self.models.keys())[0]
+                print(f"警告: 原最佳模型 {self.model_info['best_model']} 不可用")
+                print(f"使用备选模型: {best_model}")
+                self.model_info['best_model'] = best_model
+            else:
+                print(f"最佳模型: {best_model}")
+            
             print(f"特征列表: {self.feature_columns}")
 
         except Exception as e:

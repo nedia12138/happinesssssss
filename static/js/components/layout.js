@@ -80,6 +80,8 @@ Vue.component('front-layout', {
                 window.location.href = '/front/profile.html';
             } else if (command === 'admin') {
                 window.location.href = '/admin/index.html';
+            } else if (command === 'users') {
+                window.location.href = '/admin/users.html';
             } else if (command === 'logout') {
                 this.handleLogout();
             }
@@ -276,7 +278,9 @@ Vue.component('admin-layout', {
                 window.location.href = '/admin/profile.html';
             } else if (command === 'front') {
                 window.location.href = '/front/index.html';
-            } else if (command === 'logout') {
+            }else if (command === 'users') {
+                window.location.href = '/admin/users.html';
+            }  else if (command === 'logout') {
                 this.handleLogout();
             }
         },
@@ -363,6 +367,7 @@ Vue.component('admin-layout', {
                             </span>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item command="profile">个人中心</el-dropdown-item>
+                                <el-dropdown-item command="users">用户管理</el-dropdown-item>
                                 <el-dropdown-item divided command="logout">退出登录</el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
