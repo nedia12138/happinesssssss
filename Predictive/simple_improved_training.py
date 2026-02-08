@@ -12,10 +12,11 @@ from datetime import datetime
 import warnings
 
 from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.preprocessing import StandardScaler
+
+from Predictive.MyDecisionTreeRegressor import SuperiorRandomForest
+from Predictive.SuperiorLinearRegression import SuperiorLinearRegression
 
 warnings.filterwarnings('ignore')
 
@@ -95,11 +96,13 @@ class SimpleImprovedModel:
             data[col] = pd.to_numeric(data[col], errors='coerce')
             missing_count = data[col].isnull().sum()
             if missing_count > 0:
+                # 数值型特征（收入、家庭收入等）用中位数填充
                 if col in ['income', 'familyIncome', 'floorArea', 'age']:
                     fill_val = data[col].median()
                     if pd.isna(fill_val):
                         fill_val = 0
                     data[col] = data[col].fillna(fill_val)
+                # 类别型特征（教育、婚姻等）用众数填充
                 else:
                     mode_val = data[col].mode()
                     fill_val = mode_val[0] if len(mode_val) > 0 else 0
@@ -164,15 +167,18 @@ class SimpleImprovedModel:
         print("=" * 60)
         
         models_config = {
-            'linear_regression': LinearRegression(),
-            'random_forest': RandomForestRegressor(
-                n_estimators=100, 
-                max_depth=10,
-                min_samples_split=20,
-                min_samples_leaf=10,
-                random_state=42,
-                n_jobs=-1
-            )
+            'linear_regression': SuperiorLinearRegression(),
+            #原生的
+            'random_forest': SuperiorRandomForest(n_estimators=10, max_depth=8)  # 手写随机森林
+            # 'random_forest': RandomForestRegressor(
+            #     n_estimators=100,
+            #     max_depth=10,
+            #     min_samples_split=20,
+            #     min_samples_leaf=10,
+            #     random_state=42,
+            #     n_jobs=-1
+            # )
+
         }
         
         for name, model in models_config.items():

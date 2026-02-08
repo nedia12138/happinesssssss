@@ -17,7 +17,7 @@
           -0.6027
         ]
       },
-      "path": "linear_regression_20260208_120307.pkl"
+      "path": "linear_regression_20260208_190919.pkl"
     },
     "random_forest": {
       "metrics": {
@@ -35,7 +35,7 @@
           -0.5932
         ]
       },
-      "path": "random_forest_20260208_120307.pkl"
+      "path": "random_forest_20260208_190919.pkl"
     }
   },
   "feature_importance": {
@@ -66,5 +66,5 @@
     "health_age",
     "income_ratio"
   ],
-  "timestamp": "2026-02-08 12:03:07"
+  "timestamp": "2026-02-08 19:09:19"
 }
