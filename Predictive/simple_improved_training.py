@@ -10,7 +10,8 @@ import pickle
 import os
 from datetime import datetime
 import warnings
-
+from pyspark.ml.regression import LinearRegression
+from pyspark.ml.regression import RandomForestRegressor
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.preprocessing import StandardScaler
@@ -154,7 +155,7 @@ class SimpleImprovedModel:
             random_state=42,
             stratify=y
         )
-        
+
         print(f"✓ 训练集: {len(X_train)} 样本")
         print(f"✓ 测试集: {len(X_test)} 样本")
         
@@ -167,9 +168,8 @@ class SimpleImprovedModel:
         print("=" * 60)
         
         models_config = {
-            'linear_regression': SuperiorLinearRegression(),
             #原生的
-            'random_forest': SuperiorRandomForest(n_estimators=10, max_depth=8)  # 手写随机森林
+            # 'linear_regression': LinearRegression(),
             # 'random_forest': RandomForestRegressor(
             #     n_estimators=100,
             #     max_depth=10,
@@ -178,6 +178,9 @@ class SimpleImprovedModel:
             #     random_state=42,
             #     n_jobs=-1
             # )
+            #手写的
+            'linear_regression': SuperiorLinearRegression(),
+            'random_forest': SuperiorRandomForest(n_estimators=10, max_depth=8)  # 手写随机森林
 
         }
         
