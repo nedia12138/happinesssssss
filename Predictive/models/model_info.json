@@ -17,25 +17,25 @@
           -0.6027
         ]
       },
-      "path": "linear_regression_20260208_195934.pkl"
+      "path": "linear_regression_20260209_002820.pkl"
     },
     "random_forest": {
       "metrics": {
         "model_name": "random_forest",
-        "mse": 0.6105,
-        "rmse": 0.7814,
-        "mae": 0.5533,
-        "r2_score": 0.0892,
-        "cv_rmse": 0.7828,
+        "mse": 0.6208,
+        "rmse": 0.7879,
+        "mae": 0.5592,
+        "r2_score": 0.0739,
+        "cv_rmse": 0.7832,
         "cv_scores": [
-          -0.6433,
+          -0.6524,
           -0.6075,
-          -0.6178,
-          -0.5958,
-          -0.5998
+          -0.6281,
+          -0.5891,
+          -0.5902
         ]
       },
-      "path": "random_forest_20260208_195934.pkl"
+      "path": "random_forest_20260209_002820.pkl"
     }
   },
   "feature_importance": null,
@@ -53,5 +53,5 @@
     "health_age",
     "income_ratio"
   ],
-  "timestamp": "2026-02-08 19:59:34"
+  "timestamp": "2026-02-09 00:28:20"
 }
