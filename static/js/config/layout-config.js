@@ -51,7 +51,7 @@ const LayoutConfig = {
 
     // 系统配置
     system: {
-        title: '幸福感数据挖掘系统',
+        title: '幸福感数据分析系统',
         logo: '/static/image/logo.png',
         defaultAvatar: '/static/image/profile.png'
     } 

@@ -62,8 +62,6 @@ def main():
         print("1. 查看数据库中的数据")
         print("2. 运行数据分析脚本")
         print("3. 开始机器学习模型训练")
-        print("\n详细说明请参考 README_data_import.md")
-
     except Exception as e:
         print(f"\n[ERROR] 数据导入失败: {e}")
         print("请查看 data_import.log 文件获取详细错误信息")
